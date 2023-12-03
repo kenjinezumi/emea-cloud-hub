@@ -1,22 +1,17 @@
 import setViews from "../../config/setViews";
 import setSidebarDatepicker from "../menus/sidebarDatepicker";
-import categories from "../../context/categories";
+
 import {
   createCheckIcon,
 } from "../../utilities/svgs";
-
+import categories from "../../context/categories";
 
 
 const sidebarColTwo = document.querySelector(".sb__categories");
 const categoriesContainer = document.querySelector(".sb__categories--body-form");
-
-
-// renders via menu click -- see ./renderViews.js
-
-const caretList = [];
+const listHeadersCaret = [];
 
 export default function handleSidebarCategories(context, store, datepickerContext) {
-  const defaultCtg = store.getDefaultCtg();
 
   function updateComponent() {
     setViews(context.getComponent(), context, store, datepickerContext);
@@ -28,39 +23,56 @@ export default function handleSidebarCategories(context, store, datepickerContex
 
   function renderCategories() {
     const categoriesContainer = document.querySelector('.sb__categories--body-form');
-  
-    Object.keys(categories).forEach(categoryKey => {
-      const category = categories[categoryKey];
-  
-      // Create Category Header
-      const categoryHeader = document.createElement('div');
-      categoryHeader.classList.add('sbch-col__one');
-  
-      const titleDiv = document.createElement('div');
-      titleDiv.classList.add('sbch-title');
-      titleDiv.textContent = category.title;
-      categoryHeader.appendChild(titleDiv);
 
-      const caretDiv = document.createElement('div');
-      caretDiv.classList.add(`sbch-caret-${categoryKey}`, 'sbch-caret--open');
-      caretList.push(`sbch-caret-${categoryKey}`);  // Add the caret identifier to the caretList
-      console.log(caretList)
-      caretDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="var(--white2)"><path d="m12 15.375-6-6 1.4-1.4 4.6 4.6 4.6-4.6 1.4 1.4Z"/></svg>`;
-      categoryHeader.appendChild(caretDiv);
-  
-      categoriesContainer.appendChild(categoryHeader);
-  
-      // Create Category Options
-      Object.keys(category.options).forEach(optionKey => {
-        const option = category.options[optionKey];
-        createCategoryListItem(optionKey, option.color, option.active);
-      });
+    Object.keys(categories).forEach(categoryKey => {
+        const category = categories[categoryKey];
+
+        // Create Category Header Wrapper
+        const categoryHeaderWrapper = document.createElement('div');
+        categoryHeaderWrapper.className = `sb__categories-${categoryKey}--header`;
+        listHeadersCaret.push(`.sb__categories-${categoryKey}--header`);
+        categoryHeaderWrapper.style.backgroundColor = "var(--black1)";
+
+        // Create Category Header
+        const categoryHeader = document.createElement('div');
+        categoryHeader.className = 'sbch-col__one';
+
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'sbch-title';
+        titleDiv.textContent = category.title;
+        categoryHeader.appendChild(titleDiv);
+
+        const caretDiv = document.createElement('div');
+        caretDiv.className = `sbch-caret-${categoryKey} sbch-caret--open`;
+        caretDiv.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="var(--white2)"><path d="m12 15.375-6-6 1.4-1.4 4.6 4.6 4.6-4.6 1.4 1.4Z"/></svg>';
+        categoryHeader.appendChild(caretDiv);
+
+        categoryHeaderWrapper.appendChild(categoryHeader);
+        categoriesContainer.appendChild(categoryHeaderWrapper);
+
+        // Create Category Body
+        const categoryBody = document.createElement('div');
+        categoryBody.className = `sb__categories-${categoryKey}--body-form`;
+
+        Object.keys(category.options).forEach(optionKey => {
+            const option = category.options[optionKey];
+            const listItem = createCategoryListItem(optionKey, option.color, option.active);
+            categoryBody.appendChild(listItem);
+        });
+
+        categoriesContainer.appendChild(categoryBody);
     });
-  }
+}
+
+
   
+
+
+
+
 
   /**
-   * sb__categories
+   * 
    * @param {string} ctgname - category name
    * @param {string} ctgcolor - hex color
    * @param {Boolean} status - checked or not
@@ -108,30 +120,22 @@ export default function handleSidebarCategories(context, store, datepickerContex
 
     row.append(colone, coltwo);
     categoriesContainer.appendChild(row);
+    return row;
   }
 
   function handleCategoryModalToggle(clickedCaret) {
+    // Find the closest header to the clicked caret
+    const categoryHeader = clickedCaret.closest(listHeadersCaret);
+    console.log(clickedCaret)
+    if (!categoryHeader) return;
 
-
-    // Find the closest header element
-    const categoryHeader = clickedCaret.closest('.sbch-col__one');
-    if (!categoryHeader) {
-        console.log('Category header not found');
-        return;
-    }
-
-    // Assuming the next sibling element of the header is the category body
+    // Toggle the corresponding category body
     const categoryBody = categoryHeader.nextElementSibling;
-    if(categoryBody) {
-        categoryBody.classList.toggle("toggle-category--modal");
-    } else {
-        console.log('Category body not found');
-    }
+    categoryBody.classList.toggle("toggle-category--modal");
 
     // Toggle the caret orientation
     clickedCaret.classList.toggle("sbch-caret--open");
 }
-
 
 
   function handleCategorySelection(e) {
