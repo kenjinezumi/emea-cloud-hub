@@ -3,13 +3,9 @@ import setSidebarDatepicker from "../menus/sidebarDatepicker";
 
 import {
   createCheckIcon,
-  createEditIcon,
 } from "../../utilities/svgs";
 
-import {
-  getClosest,
-  placePopup
-} from "../../utilities/helpers";
+
 
 const sidebarColTwo = document.querySelector(".sb__categories");
 const cWrapper = document.querySelector(".sb__categories--body");
@@ -104,33 +100,18 @@ export default function handleSidebarCategories(context, store, datepickerContex
     categoriesContainer.appendChild(row);
   }
 
-  function handleCategoryModalToggle() {
-    cWrapper.classList.toggle("toggle-category--modal");
-    if (!cWrapper.classList.contains("toggle-category--modal")) {
-      categoryHeaderCaret.classList.add("sbch-caret--open");
-      categoryHeaderCaretEventStatus.classList.add("sbch-caret--open");
-      categoryHeaderCaretTiers.classList.add("sbch-caret--open");
-      categoryHeaderCaretSeries.classList.add("sbch-caret--open");
+  function handleCategoryModalToggle(clickedCaret) {
+    // Find the closest header to the clicked caret
+    const categoryHeader = clickedCaret.closest(".sb__categories--header, .sb__categories-region--header, .sb__categories-event-status--header, .sb__categories--header-tier, .sb__categories-series--header");
+    if (!categoryHeader) return;
 
+    // Toggle the corresponding category body
+    const categoryBody = categoryHeader.nextElementSibling;
+    categoryBody.classList.toggle("toggle-category--modal");
 
-    } else {
-      categoryHeaderCaret.classList.remove("sbch-caret--open");
-      categoryHeaderCaretEventStatus.classList.remove("sbch-caret--open");
-      categoryHeaderCaretTiers.classList.remove("sbch-caret--open");
-      categoryHeaderCaretSeries.classList.remove("sbch-caret--open");
-
-
-    }
-    categoriesHeader.style.backgroundColor = "var(--black0)";
-    categoriesHeaderEventStatus.style.backgroundColor = "var(--black0)";
-
-    setTimeout(() => {
-      categoriesHeader.style.backgroundColor = "var(--black1)";
-      categoriesHeaderEventStatus.style.backgroundColor = "var(--black1)";
-
-    }, 200);
-  }
-
+    // Toggle the caret orientation
+    clickedCaret.classList.toggle("sbch-caret--open");
+}
 
 
   function handleCategorySelection(e) {
@@ -155,31 +136,35 @@ export default function handleSidebarCategories(context, store, datepickerContex
 
 
   function delegateCategoryEvents(e) {
-    const ctgtoggleModal = getClosest(e, ".sbch-col__one");
-    const ctgChck = getClosest(e, ".sbch-form--item__col");
+    // Check if a caret was clicked
+    const caretElement = e.target.closest("[class^='sbch-caret']");
 
-    if (ctgtoggleModal) {
-      handleCategoryModalToggle();
-      return;
-    }
-    
 
-    // toggle category checkbox and display entries
-    if (ctgChck) {
-      handleCategorySelection(e);
-      return;
+    if (caretElement) {
+        handleCategoryModalToggle(caretElement);
+        return;
+    } else {
+      console.log('Not clicked');
     }
 
-  }
+    // Handle category selection
+    if (e.target.closest(".sbch-form--item__col")) {
+        handleCategorySelection(e);
+    }
+}
 
-  const initSidebarCategories = () => {
-    renderCategories();
-    const fullCtgRender = () => {
+
+  
+
+const initSidebarCategories = () => {
+  renderCategories();
+  const fullCtgRender = () => {
       renderCategories();
       updateComponent();
-    };
-    store.setRenderCategoriesCallback(fullCtgRender);
-    sidebarColTwo.onmousedown = delegateCategoryEvents;
   };
-  initSidebarCategories();
+  store.setRenderCategoriesCallback(fullCtgRender);
+  sidebarColTwo.addEventListener('mousedown', delegateCategoryEvents);
+};
+
+initSidebarCategories();
 }
