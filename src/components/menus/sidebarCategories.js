@@ -8,22 +8,12 @@ import {
 
 
 const sidebarColTwo = document.querySelector(".sb__categories");
-const cWrapper = document.querySelector(".sb__categories--body");
 const categoriesContainer = document.querySelector(".sb__categories--body-form");
-const categoriesHeader = document.querySelector(".sb__categories--header");
-const categoriesHeaderEventStatus= document.querySelector(".sb__categories-event-status--header");
 
-const categoryHeaderCaret = document.querySelector(".sbch-caret");
-const categoryHeaderCaretEventStatus = document.querySelector(".sbch-caret-event-status");
-const categoryHeaderCaretTiers = document.querySelector(".sbch-caret-tier");
-const categoryHeaderCaretSeries = document.querySelector(".sbch-caret-series");
-
-// const categoryHeaderCaret = document.querySelector(".sbch-caret");
-// const categoryHeaderCaret = document.querySelector(".sbch-caret");
-// const categoryHeaderCaret = document.querySelector(".sbch-caret");
 
 // renders via menu click -- see ./renderViews.js
 
+const caretList = [];
 
 export default function handleSidebarCategories(context, store, datepickerContext) {
   const defaultCtg = store.getDefaultCtg();
@@ -50,9 +40,11 @@ export default function handleSidebarCategories(context, store, datepickerContex
       titleDiv.classList.add('sbch-title');
       titleDiv.textContent = category.title;
       categoryHeader.appendChild(titleDiv);
-  
+
       const caretDiv = document.createElement('div');
-      caretDiv.classList.add('sbch-caret-region', 'sbch-caret--open');
+      caretDiv.classList.add(`sbch-caret-${categoryKey}`, 'sbch-caret--open');
+      caretList.push(`sbch-caret-${categoryKey}`);  // Add the caret identifier to the caretList
+      console.log(caretList)
       caretDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="var(--white2)"><path d="m12 15.375-6-6 1.4-1.4 4.6 4.6 4.6-4.6 1.4 1.4Z"/></svg>`;
       categoryHeader.appendChild(caretDiv);
   
@@ -119,17 +111,27 @@ export default function handleSidebarCategories(context, store, datepickerContex
   }
 
   function handleCategoryModalToggle(clickedCaret) {
-    // Find the closest header to the clicked caret
-    const categoryHeader = clickedCaret.closest(".sb__categories--header, .sb__categories-region--header, .sb__categories-event-status--header, .sb__categories--header-tier, .sb__categories-series--header");
-    if (!categoryHeader) return;
 
-    // Toggle the corresponding category body
+
+    // Find the closest header element
+    const categoryHeader = clickedCaret.closest('.sbch-col__one');
+    if (!categoryHeader) {
+        console.log('Category header not found');
+        return;
+    }
+
+    // Assuming the next sibling element of the header is the category body
     const categoryBody = categoryHeader.nextElementSibling;
-    categoryBody.classList.toggle("toggle-category--modal");
+    if(categoryBody) {
+        categoryBody.classList.toggle("toggle-category--modal");
+    } else {
+        console.log('Category body not found');
+    }
 
     // Toggle the caret orientation
     clickedCaret.classList.toggle("sbch-caret--open");
 }
+
 
 
   function handleCategorySelection(e) {
