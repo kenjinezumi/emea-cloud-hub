@@ -1,6 +1,6 @@
 import setViews from "../../config/setViews";
 import setSidebarDatepicker from "../menus/sidebarDatepicker";
-
+import categories from "../../context/categories";
 import {
   createCheckIcon,
 } from "../../utilities/svgs";
@@ -37,20 +37,38 @@ export default function handleSidebarCategories(context, store, datepickerContex
   }
 
   function renderCategories() {
-    const ctg = store.getAllCtg();
-    const keys = Object.keys(ctg);
-    for (let i = 0; i < keys.length; i++) {
-      let [ctgname, color, status] = [
-        keys[i],
-        ctg[keys[i]].color,
-        ctg[keys[i]].active
-      ];
-      createCategoryListItem(ctgname, color, status);
-    }
+    const categoriesContainer = document.querySelector('.sb__categories--body-form');
+  
+    Object.keys(categories).forEach(categoryKey => {
+      const category = categories[categoryKey];
+  
+      // Create Category Header
+      const categoryHeader = document.createElement('div');
+      categoryHeader.classList.add('sbch-col__one');
+  
+      const titleDiv = document.createElement('div');
+      titleDiv.classList.add('sbch-title');
+      titleDiv.textContent = category.title;
+      categoryHeader.appendChild(titleDiv);
+  
+      const caretDiv = document.createElement('div');
+      caretDiv.classList.add('sbch-caret-region', 'sbch-caret--open');
+      caretDiv.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="var(--white2)"><path d="m12 15.375-6-6 1.4-1.4 4.6 4.6 4.6-4.6 1.4 1.4Z"/></svg>`;
+      categoryHeader.appendChild(caretDiv);
+  
+      categoriesContainer.appendChild(categoryHeader);
+  
+      // Create Category Options
+      Object.keys(category.options).forEach(optionKey => {
+        const option = category.options[optionKey];
+        createCategoryListItem(optionKey, option.color, option.active);
+      });
+    });
   }
+  
 
   /**
-   * 
+   * sb__categories
    * @param {string} ctgname - category name
    * @param {string} ctgcolor - hex color
    * @param {Boolean} status - checked or not
