@@ -138,25 +138,45 @@ export default function handleSidebarCategories(context, store, datepickerContex
 }
 
 
-  function handleCategorySelection(e) {
-    let checkbox = e.target.children[0].children[0];
-    let status = checkbox.getAttribute("data-sbch-checked");
-    let cat = checkbox.getAttribute("data-sbch-category");
-    let color = store.getCtgColor(cat);
-    if (status === "true") {
+function handleCategorySelection(e) {
+  // Find the checkbox button element directly within the event's path
+
+  let checkbox = e.target.querySelector('button')
+
+  // Proceed only if a checkbox is found
+  if (!checkbox) {
+      console.log('Checkbox not found');
+      return;
+  }
+  console.log(checkbox)
+
+
+  let status = checkbox.getAttribute("data-sbch-checked");
+  console.log('1')
+  let cat = checkbox.getAttribute("data-sbch-category");
+  
+  let color = store.getCtgColor(cat);
+  console.log(status, cat, color)
+
+  if (status === "true") {
+    console.log('that is true')
       checkbox.setAttribute("data-sbch-checked", "false");
       store.setCategoryStatus(cat, false);
       checkbox.style.backgroundColor = "var(--black1)";
       checkbox.firstChild.setAttribute("fill", "none");
-    } else {
+  } else {
+    console.log('that is false')
+
       checkbox.setAttribute("data-sbch-checked", "true");
       store.setCategoryStatus(cat, true);
       checkbox.style.backgroundColor = color;
       checkbox.firstChild.setAttribute("fill", "var(--taskcolor0)");
-    }
-    renderSidebarDatepickerCtg();
-    updateComponent();
   }
+  
+  renderSidebarDatepickerCtg();
+  updateComponent();
+}
+
 
 
   function delegateCategoryEvents(e) {

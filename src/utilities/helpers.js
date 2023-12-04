@@ -24,12 +24,19 @@ function getClosest(e, element) {
 }
 
 function hextorgba(hex, alpha) {
-  let r = 0, g = 0, b = 0, a = alpha;
-  r = "0x" + hex[1] + hex[2];
-  g = "0x" + hex[3] + hex[4];
-  b = "0x" + hex[5] + hex[6];
-  return "rgba(" + +r + "," + +g + "," + +b + "," + a + ")";
+  console.log(hex)
+  if (typeof hex !== 'string' || hex[0] !== '#' || hex.length !== 7) {
+    throw new Error('Invalid hex color format');
+  }
+
+  let r = parseInt(hex.substring(1, 3), 16);
+  let g = parseInt(hex.substring(3, 5), 16);
+  let b = parseInt(hex.substring(5, 7), 16);
+  let a = alpha;
+
+  return `rgba(${r},${g},${b},${a})`;
 }
+
 
 function generateId() {
   return Date.now().toString(36) + Math.random().toString(36).substring(2);

@@ -597,7 +597,13 @@ class Store {
   }
 
   getDefaultCtg() {
-    return Object.entries(this.ctg)[0];
+    let typeEntries =  categories.type;
+    console.log('checking typentiresi')
+    console.log(typeEntries)
+
+// Log the first entry of the 'type' category, if it exists
+   
+    return typeEntries;
   }
 
   getFirstActiveCategory() {
@@ -610,22 +616,19 @@ class Store {
   }
 
   getFirstActiveCategoryKeyPair() {
-    for (let [key, value] of Object.entries(this.ctg)) {
-      if (value.active) {
-        return [key, value.color];
-      }
+    const activeTypeCategories = this.getActiveCategories();
+    if (activeTypeCategories.length > 0) {
+      const firstActiveType = activeTypeCategories[0];
+      const color = this.ctg.type.options[firstActiveType].color;
+      return [firstActiveType, color];
     }
-    const backup = this.getDefaultCtg();
-    return [backup[0], backup[1].color];
+    return [null, '#FFFFFF']; // Default value if no active type category
   }
 
   getActiveCategories() {
-    let active = Object.keys(this.ctg).filter((key) => this.ctg[key].active);
-    if (active.length > 0) {
-      return active;
-    } else {
-      active = [];
-    }
+    // Assuming 'type' categories are stored under categories.type.options
+    const typeOptions = this.ctg.type.options;
+    return Object.keys(typeOptions).filter(key => typeOptions[key].active);
   }
 
   getActiveCategoriesKeyPair() {
@@ -651,7 +654,12 @@ class Store {
   }
 
   getCtgColor(ctg) {
-    return this.ctg[ctg].color;
+    if (this.ctg.type && this.ctg.type.options && this.ctg.type.options[ctg]) {
+      return this.ctg.type.options[ctg].color;
+    } else {
+      console.log('Category not found in type options');
+      return null; // or a default color, e.g., '#FFFFFF'
+    }
   }
 
   getCtgLength(category) {

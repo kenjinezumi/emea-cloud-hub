@@ -780,8 +780,9 @@ export default function setMonthView(context, store, datepickerContext) {
 
       // handle case where no category is active
       let tempctg;
-      let color;
-      if (store.getActiveCategories() === undefined) {
+      let color = '#FFFFFF'; // Default color
+    
+      if (store.getActiveCategories().length === 0) {
         let tempdefaultctg = store.getDefaultCtg();
         tempctg = tempdefaultctg[0];
         color = tempdefaultctg[1].color;
@@ -790,6 +791,9 @@ export default function setMonthView(context, store, datepickerContext) {
         tempctg = tempcurrentctg[0];
         color = tempcurrentctg[1];
       }
+
+
+      
       const offsetcolor = hextorgba(color, 0.5);
 
       configNewBoxInsertion(cellWrapper, cell, tempctg, offsetcolor);

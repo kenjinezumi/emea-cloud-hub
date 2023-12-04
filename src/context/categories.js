@@ -26,6 +26,15 @@ const categories = {
     
   }
 },
+type:{
+  title:'Type',
+  options:{
+  'option 1': { color: '#FFFFFF', active: true },
+  'option 2': { color: '#FFFFFF', active: true },
+  'option 3': { color: '#FFFFFF', active: true },
+  'option 4': { color: '#FFFFFF', active: true },
+  
+}}
 }
   
 
