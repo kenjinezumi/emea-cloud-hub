@@ -1084,3 +1084,16 @@ export default function setEntryForm(context, store, datepickerContext) {
 
   setFormInitialValues();
 }
+
+document.querySelector('.form--footer__button-full-view').addEventListener('click', function() {
+  var form = document.querySelector('.entries__form');
+  var buttonText = this.textContent || this.innerText;
+
+  form.classList.toggle('full-view');
+
+  if (buttonText === 'Expand View') {
+    this.textContent = 'Minimize View';
+  } else {
+    this.textContent = 'Expand View';
+  }
+});

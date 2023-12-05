@@ -40,6 +40,21 @@
   transition-timing-function: ease-in-out;
 }
 
+.entries__form.full-view {
+  position: fixed; /* Use fixed to position relative to the viewport */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: none;
+  max-height: none;
+  width: 70%; /* Full width of the viewport */
+  height: 70%; /* Full height of the viewport */
+  z-index: 1500; /* Ensure it's above other content */
+  border-radius: 0; /* Optional: Remove border radius in full view */
+}
+
+
 .hide-form-overlay {
   display: none;
 }
@@ -649,4 +664,15 @@
   .form-header--dragarea {
     cursor:default;
   }
+}
+
+.full-view {
+  position: fixed; /* or 'absolute' */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000; /* Ensure it's above other content */
+  overflow-y: auto; /* In case the content overflows */
+  /* Additional styling as needed */
 }
