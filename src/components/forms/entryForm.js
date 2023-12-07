@@ -40,7 +40,7 @@ const entriesForm = document.querySelector(".entry-form");
 const entriesFormBody = document.querySelector(".entries__form--body");
 
 // title / description inputs
-const titleInput = document.querySelector(".form--body__title-input");
+const titleInput = document.querySelector(".form--body__name-input");
 const descriptionInput = document.querySelector(".form--body__description-input");
 
 // start date / time
@@ -1096,4 +1096,29 @@ document.querySelector('.form--footer__button-full-view').addEventListener('clic
   } else {
     this.textContent = 'Expand View';
   }
+
+  const nextButton = document.querySelector('.form--footer__button-next');
+    nextButton.addEventListener('click', function() {
+        // Implement your logic for the Next button
+        console.log('Next button clicked');
+        // Example: Navigate to another section or load new content
+    });
+
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  var page1 = document.getElementById('page1');
+  var page2 = document.getElementById('page2');
+  var nextButton = document.getElementById('page1Next');
+  var backButton = document.getElementById('page2');
+ 
+  nextButton.addEventListener('click', function() {
+      page1.style.display = 'none';
+      page2.style.display = 'block';
+  });
+
+  backButton.addEventListener('click', function() {
+      page1.style.display = 'block';
+      page2.style.display = 'none';
+  });
 });

@@ -25,10 +25,10 @@
   display: flex;
   flex-direction: column;
   height: auto;
-  min-height: 200px;
-  max-height: 420px;
-  min-width: 300px;
-  max-width: 500px;
+  min-height: 400px;
+  max-height: 620px;
+  min-width: 600px;
+  max-width: 1000px;
   width: auto;
   overflow: hidden;
   position: absolute;
@@ -69,12 +69,9 @@
 
 .entries__form--header {
   align-items: center;
-  background: var(--darkgrey4);
   border-radius: 8px 8px 0 0;
   cursor: move;
   display: flex;
-  height: 36px;
-  min-height: 36px;
   justify-content: space-between;
   position: relative;
   width: 100%
@@ -116,13 +113,14 @@
   right: 12px
 }
 
-.entry-form {
-  display: flex;
+.entry-form-main, .entry-form {
+  display: grid;
   flex-direction: column;
   height: 100%;
   overflow: hidden;
   width: 100%;
 }
+
 
 .entries__form--body {
   display: flex;
@@ -144,19 +142,23 @@
 }
 
 
-.form--body__description,
-.form--body__title {
-  align-items: center;
+.form--body__description {
+  /* align-items: center; */
   display: flex;
-  margin-left: auto;
-  padding: 4px;
-  width: calc(100% - 48px)
+  margin-left: 43px;
+  width: calc(100% - 48px);
+  font-size: 24px;
+}
+.form--body__expand-view {
+  align-items: center;
+  margin-left:auto;
+  height: 12px;
+  width:100%;
+  margin-top:20px;
+  margin-bottom:20px;
 }
 
-.form--body__title {
-  height: 38px;
-  margin-bottom: 8px
-}
+
 
 .form--body__description {
   height: 100%
@@ -167,12 +169,29 @@
   border: none;
   border-bottom: 2px solid var(--mediumgrey2);
   color: var(--white1);
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 500;
   height: 32px;
   width: 100%
 }
 
+.form--body__name-input {
+  background: var(--black1);
+  border: none;
+  border-bottom: 2px solid var(--mediumgrey2);
+  color: var(--white1);
+  font-size: 24px;
+  font-weight: 500;
+  height: 32px;
+  width: 600px;
+  text-align:left;
+  align-items: start;
+
+}
+
+
+
+.form--body__name-input,
 .form--body__description-input,
 .form--body__title-input {
   transition-duration: 250ms;
@@ -180,6 +199,7 @@
   transition-timing-function: cubic-bezier(.33, 1, .68, 1)
 }
 
+.form--body__name-input:focus-visible 
 .form--body__title-input:focus-visible {
   border-bottom: 2px solid var(--primary2)
 }
@@ -525,9 +545,12 @@
 }
 
 .form--footer__button-cancel,
+.form--footer__button-back,
+.form--footer__button-next,
 .form--footer__button-save {
   font-family: var(--primaryFont) !important;
   font-weight: 500;
+  margin-left: 10px;
   align-items: center;
   text-transform: capitalize;
   border-radius: var(--borderradius);
@@ -540,6 +563,14 @@
   font-size: 14px;
 }
 
+.form--footer__button-full-view{
+  border: 1px solid var(--darkgrey2);
+  color: var(--white3);
+  margin-left: 43px;
+  margin-bottom: 10px;
+}
+
+
 .form--footer__button-cancel {
   border: 1px solid var(--darkgrey2);
   color: var(--white3);
@@ -550,10 +581,27 @@
   background: var(--primary2);
   color: var(--taskcolor0)
 }
+.form--footer__button-back{
+  border: 1px solid var(--darkgrey2);
+  color: var(--white3);
+  margin-right: 12px
+}
 
+.form--footer__button-next{
+  background: var(--primary2);
+  color: var(--taskcolor0)
+
+}
+
+.form--footer__button-back:hover,
 .form--footer__button-cancel:hover {
   background: var(--darkgrey4);
   color: var(--white1);
+}
+.form--footer__button-next:hover{
+  filter: brightness(1.1);
+
+
 }
 
 .form--footer__button-save:hover {
@@ -633,7 +681,7 @@
   }
 
   .entries__form--body {
-    padding: 8px 16px
+    padding: 0 0 
   }
 
   .form--body__description,
@@ -675,4 +723,209 @@
   z-index: 1000; /* Ensure it's above other content */
   overflow-y: auto; /* In case the content overflows */
   /* Additional styling as needed */
+}
+
+#emojiPicker {
+  background: var(--darkgrey4); /* Example variable, replace with your color */
+  color: var(--white1); /* Example variable, replace with your color */
+  border: 2px solid var(--mediumgrey2); /* Example variable, replace with your color */
+  border-radius: var(--borderradius); /* Example variable, replace with your radius */
+  height:60px;
+  text-align: center; /* Adjust for transparency, 0.5 is 50% transparent */
+  font-size:24px;
+  width: 100px; /* Adjust as needed */
+}
+
+#organisedByPicker{
+  background: var(--darkgrey4); /* Example variable, replace with your color */
+  color: var(--white1); /* Example variable, replace with your color */
+  border: 2px solid var(--mediumgrey2); /* Example variable, replace with your color */
+  border-radius: var(--borderradius); /* Example variable, replace with your radius */
+  height:60px;
+  text-align: center; /* Adjust for transparency, 0.5 is 50% transparent */
+  font-size:18px;
+  width: 150px; /* Adjust as needed */
+}
+
+#activityTypePicker{
+  background: var(--darkgrey4); /* Example variable, replace with your color */
+  color: var(--white1); /* Example variable, replace with your color */
+  border: 2px solid var(--mediumgrey2); /* Example variable, replace with your color */
+  border-radius: var(--borderradius); /* Example variable, replace with your radius */
+  height:60px;
+  text-align: center; /* Adjust for transparency, 0.5 is 50% transparent */
+  font-size:18px;
+  width: 200px; /* Adjust as needed */
+
+}
+
+#emojiPicker option {
+  color: var(--black1); /* Example variable, replace with your color */
+  background: var(--white1); /* Example variable, replace with your color */
+  font-size: 40px; /* This ensures that the dropdown options also have larger text */
+
+}
+
+
+/* Optional: Adjust the width of the children if necessary */
+.form--body__title {
+  flex-basis: 48%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  margin-left: 43px;
+  font-size: 24px;
+}
+
+.form--body__organised-by,
+.form--body__emoji{
+  flex-basis: 20%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  margin-left: 43px;
+  font-size: 28px;
+}
+
+.form--body_activity{
+  flex-basis: 20%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  font-size: 28px;
+}
+
+.form--body__marketing-led-label,
+.form--body__emoji-label{
+  flex-basis: 20%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  margin-left: 43px;
+  font-size: 18px;
+  width:100%;
+}
+
+.form--body__toggle-priority{
+  flex-basis: 100%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  margin-left: 43px;
+  font-size: 18px;
+  width:100%;
+}
+
+.form--body__toggle-priority-label{
+  flex-basis:100%; /* Adjust the width as needed */
+  margin-left: 20px;
+  font-size: 18px;
+  
+  align-items:start;
+  width:100%;
+}
+
+
+.form--body__activity-type-label,
+.form--body__type_event_title{
+  flex-basis:60%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  /* margin-left: 43px; */
+  font-size: 18px;
+  align-items: start;
+  width:100%;
+}
+.form--body__end-date-label,
+.form--body__start-date-label{
+  flex-basis:50%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  margin-left: 43px;
+  font-size: 18px;
+  align-items: start;
+  width:100%;
+}
+
+.form--body_name_event{
+  flex-basis:60%; /* Adjust the width as needed */
+  margin-right: 10px; /* Optional spacing between elements */
+  /* margin-left: 43px; */
+  font-size: 24px;
+  align-items: start;
+  width:100%;
+
+} 
+
+.form--body__type_event{
+  flex-basis:60%; /* Adjust the width as needed */
+  margin-right: 100px; /* Optional spacing between elements */
+  /* margin-left: 43px; */
+  font-size: 18px;
+  align-items: end;
+  text-align:right;
+  width:100%;
+}
+
+.form--body__row {
+  margin-top:20px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Optional: adjust the spacing between columns */
+}
+
+.form--body__row-with-title {
+  margin-top:4px;
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Optional: adjust the spacing between columns */
+}
+
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
