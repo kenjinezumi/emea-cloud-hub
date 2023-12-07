@@ -250,13 +250,20 @@
 .form--body__category-icon,
 .form--body__category-inputs,
 .form--body__end-icon,
-.form--body__end-inputs,
-.form--body__start-icon,
-.form--body__start-inputs {
+.form--body__start-icon{
   align-items: center;
   display: flex;
   height: 45px;
   width: 100%;
+}
+
+.form--body__end-inputs,
+.form--body__start-inputs {
+  align-items: center;
+  display: flex;
+  height: 45px;
+  width: 50%;
+  border: 1px solid #ccc; /* Example border */
 }
 
 .form--body__category-icon,
@@ -929,3 +936,11 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.date-input {
+  border: 1px solid #ccc; /* Example border */
+  padding: 5px;
+  border-radius: 4px;
+  position: relative;
+}
+

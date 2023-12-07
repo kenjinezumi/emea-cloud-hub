@@ -830,34 +830,29 @@ z" />
               </div>
             </div>
 
+            <div class="form--body__row">
+              <div class="form--body__start-date-label">
+                <label for="organised_by">
+                  <div class="form--body__start-inputs">
+                    <span class="form--body-start__date" data-form-date-type="start"></span>
+                    <span class="form--body-start__time" data-form-time-type="start"> 1:30am </span>
+                  </div>
+                  <small>MM/DD/YYYY</small> 
+                </label>
+              </div>
+              <div class="form--body__end-date-label">
+                <div class="form--body__end-inputs">
+                  <span class="form--body-end__date" data-form-date-type="end"></span>
+                  <span class="form--body-end__time" data-form-time-type="end"> 3:30am </span>
+                </div>
+                <small>MM/DD/YYYY</small> 
+              </div>
+            </div>
+            
+            <!-- End of row 4: Start && end dates -->
 
-            <!-- row 2: start date & time -->
-            <div class="form--body__start form-body-double">
-              
-              <div class="form--body__start-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="var(--white3)" class="form--body-svg__start">
-                  <path d="m15.3 16.7 1.4-1.4-3.7-3.7V7h-2v5.4ZM12 22q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-10Zm0 8q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Z" />
-                </svg>
-              </div>
-              <div class="form--body__start-inputs">
-                <span class="form--body-start__date" data-form-date-type="start"></span>
-                <div class="form-br"></div>
-                <span class="form--body-start__time" data-form-time-type="start"> 1:30am </span>
-              </div>
-            </div>
-            <!-- row 3: end date & time -->
-            <div class="form--body__end form-body-double">
-              <div class="form--body__end-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" fill="var(--white3)" class="form--body-svg__end">
-                  <path d="m15.3 16.7 1.4-1.4-3.7-3.7V7h-2v5.4ZM12 22q-2.075 0-3.9-.788-1.825-.787-3.175-2.137-1.35-1.35-2.137-3.175Q2 14.075 2 12t.788-3.9q.787-1.825 2.137-3.175 1.35-1.35 3.175-2.138Q9.925 2 12 2t3.9.787q1.825.788 3.175 2.138 1.35 1.35 2.137 3.175Q22 9.925 22 12t-.788 3.9q-.787 1.825-2.137 3.175-1.35 1.35-3.175 2.137Q14.075 22 12 22Zm0-10Zm0 8q3.325 0 5.663-2.337Q20 15.325 20 12t-2.337-5.663Q15.325 4 12 4T6.338 6.337Q4 8.675 4 12t2.338 5.663Q8.675 20 12 20Z" />
-                </svg>
-              </div>
-              <div class="form--body__end-inputs">
-                <span class="form--body-end__date" data-form-date-type="end"></span>
-                <div class="form-br"></div>
-                <span class="form--body-end__time" data-form-time-type="end"> 3:30am </span>
-              </div>
-            </div>
+
+            
 
             <div class="form--body__description form-body-single">
               <textarea placeholder="Add description" class="form--body__description-input" maxLength="200" spellcheck="false"></textarea>
@@ -887,7 +882,7 @@ z" />
             </div>
           </div>
           <div class="entries__form--footer">
-            <button class="form--footer__button-cancel" type="reset" role="button" aria-label="button">reset</button>
+            <!-- <button class="form--footer__button-cancel" type="reset" role="button" aria-label="button">reset</button> -->
             <button class="form--footer__button-next" type="button" role="button" aria-label="Next page of form" id="page1Next">Next</button>
             <!-- footer -->
           </div>
