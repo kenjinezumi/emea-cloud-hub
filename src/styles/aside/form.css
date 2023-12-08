@@ -140,8 +140,9 @@
 .entries__form--body::-webkit-scrollbar-thumb {
   width: 14px;
 }
-
-
+.form--body__region,
+.form--body__subregion,
+.form--body__countries,
 .form--body__description {
   /* align-items: center; */
   display: flex;
@@ -149,6 +150,8 @@
   width: calc(100% - 48px);
   font-size: 24px;
 }
+
+
 .form--body__expand-view {
   align-items: center;
   margin-left:auto;
@@ -190,7 +193,7 @@
 }
 
 
-
+.form--body__marketing-id-input,
 .form--body__name-input,
 .form--body__description-input,
 .form--body__title-input {
@@ -204,6 +207,9 @@
   border-bottom: 2px solid var(--primary2)
 }
 
+.form--body__region-input,
+.form--body__subregion-input,
+.form--body__countries-input,
 .form--body__description-input {
   word-wrap: break-word;
   background: var(--darkgrey4);
@@ -216,7 +222,6 @@
   height: 100%;
   height: 56px;
   line-height: 24px;
-  margin: 0;
   outline: none;
   overflow-x: hidden;
   overflow-y: visible;
@@ -832,6 +837,12 @@
   align-items: start;
   width:100%;
 }
+
+.form--body__description-marketing-id,
+.form--body__description-label,
+.form--body__region-label,
+.form--body__subregion-label,
+.form--body__countries-label,
 .form--body__end-date-label,
 .form--body__start-date-label{
   flex-basis:50%; /* Adjust the width as needed */

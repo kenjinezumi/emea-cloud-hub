@@ -471,7 +471,7 @@ z" />
                       <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
                     </svg>
                   </div>
-                  <div class="sb-yearpicker-title">2023</div>
+                  <div class="sb-yearpicker-title">2024</div>
                   <div class="sb-yearpicker-next">
                     <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="var(--white4)">
                       <path d="M0 0h24v24H0z" fill="none" />
@@ -682,7 +682,7 @@ z" />
               <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
             </svg>
           </button>
-          <div class="yearpicker-title">2023</div>
+          <div class="yearpicker-title">2025</div>
           <button class="yearpicker-next">
             <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 0 24 24" width="18px" fill="var(--white4)">
               <path d="M0 0h24v24H0z" fill="none" />
@@ -712,41 +712,29 @@ z" />
       <div class="form--body__expand-view form-body-full-view">
         <button class="form--footer__button-full-view" type="button" role="button" aria-label="Expand to full view">Expand View</button>
       </div>
-      <div class="entries__form--header">
-      </div>
-
+      <div class="entries__form--header"></div>
       <!-- first page of the form-->
       <div class="entry-form-main" id="page1">
-
         <!-- Title and first row -->
         <div class="form--body__row">
           <div class="form--body__title">
-              <h1>About this event</h1>
+            <h1>About this event</h1>
           </div>
-            <!--This one is displayed depending on whethere it's a new event or not-->
+          <!--This one is displayed depending on whethere it's a new event or not-->
           <div class="form--body__type_event">
-              <p>New event</p>
+            <p>New event</p>
           </div>
         </div>
         <!-- End of title and first row-->
-
-
         <form class="entry-form">
           <div class="entries__form--body">
-
-
             <!-- row 1: Emoji picker && Title -->
             <div class="form--body__row">
               <div class="form--body__emoji-label">
                 <label for="emojiPicker">Emoji:</label>
               </div>
-              <div class="form--body__type_event_title">
-                Name:
-              </div>
+              <div class="form--body__type_event_title"> Name: </div>
             </div>
-
-
-
             <!-- row 1: Emoji picker && Title -->
             <div class="form--body__row-with-title">
               <div class="form--body__emoji">
@@ -756,27 +744,19 @@ z" />
                   <option value="thumbsup">👍</option>
                   <!-- Add more emoji options here -->
                 </select>
-  
               </div>
               <div class="form--body__name_event">
                 <input type="text" placeholder="" class="form--body__name-input" maxlength="50" spellcheck="false" required>
               </div>
-              
-              </div>
+            </div>
             <!-- End of row 1: Emoji picker && Title -->
-
-
             <!-- Beginning of row 2: Marketing && Activity type -->
-
             <div class="form--body__row">
               <div class="form--body__marketing-led-label">
                 <label for="organised_by">Organised by:</label>
               </div>
-              <div class="form--body__activity-type-label">
-                Activity type:
-              </div>
+              <div class="form--body__activity-type-label"> Activity type: </div>
             </div>
-
             <div class="form--body__row-with-title">
               <div class="form--body__organised-by">
                 <select id="organisedByPicker" name="organised_by">
@@ -785,7 +765,6 @@ z" />
                   <option value="3">Placeholder3</option>
                   <!-- Add more emoji options here -->
                 </select>
-  
               </div>
               <div class="form--body_activity">
                 <select id="activityTypePicker" name="activity">
@@ -793,43 +772,29 @@ z" />
                   <option value="option2">Option 2</option>
                   <option value="option3">Option 3</option>
                   <option value="option4">Option 4</option>
-
                   <!-- Add more emoji options here -->
                 </select>
-  
               </div>
-              
             </div>
             <!-- End of row 2: Marketing && Activity type -->
-
-
             <!-- Beginning of row 3: High priority -->
-
             <div class="form--body__row">
               <div class="form--body__toggle-priority">
-                  <label class="switch">
-                      <input type="checkbox" id="toggleCheckbox">
-                      <span class="slider round"></span>
-                  </label>
-                  <span class="form--body__toggle-priority-label">
-                    High priority status
-                  </span>      
+                <label class="switch">
+                  <input type="checkbox" id="toggleCheckbox">
+                  <span class="slider round"></span>
+                </label>
+                <span class="form--body__toggle-priority-label"> High priority status </span>
               </div>
             </div>
-
             <!-- End of row 3: High priority -->
-
             <!-- Beginning of row 4: Start && end dates -->
-
             <div class="form--body__row">
               <div class="form--body__start-date-label">
                 <label for="organised_by">Event start date</label>
               </div>
-              <div class="form--body__end-date-label">
-                Event end date
-              </div>
+              <div class="form--body__end-date-label"> Event end date </div>
             </div>
-
             <div class="form--body__row">
               <div class="form--body__start-date-label">
                 <label for="organised_by">
@@ -837,7 +802,7 @@ z" />
                     <span class="form--body-start__date" data-form-date-type="start"></span>
                     <span class="form--body-start__time" data-form-time-type="start"> 1:30am </span>
                   </div>
-                  <small>MM/DD/YYYY</small> 
+                  <small>MM/DD/YYYY</small>
                 </label>
               </div>
               <div class="form--body__end-date-label">
@@ -845,18 +810,30 @@ z" />
                   <span class="form--body-end__date" data-form-date-type="end"></span>
                   <span class="form--body-end__time" data-form-time-type="end"> 3:30am </span>
                 </div>
-                <small>MM/DD/YYYY</small> 
+                <small>MM/DD/YYYY</small>
               </div>
             </div>
-            
             <!-- End of row 4: Start && end dates -->
-
-
-            
-
-            <div class="form--body__description form-body-single">
-              <textarea placeholder="Add description" class="form--body__description-input" maxLength="200" spellcheck="false"></textarea>
+            <!--Beginning of row 5: description-->
+            <div class="form--body__row">
+              <div class="form--body__description-label"> Description </div>
             </div>
+            <div class="form--body__row">
+              <div class="form--body__description">
+                <textarea placeholder="Add description" class="form--body__description-input" maxLength="200" spellcheck="false"></textarea>
+              </div>
+            </div>
+            <!--End of row 5: description-->
+            <!--Beginning of row 6: marketing instance id-->
+            <div class="form--body__row">
+              <div class="form--body__description-marketing-id"> Marketing Program Instance ID </div>
+            </div>
+            <div class="form--body__row">
+              <div class="form--body__description-marketing-id">
+                <textarea placeholder="Add description" class="form--body__marketing-id-input" maxLength="200" spellcheck="false"></textarea>
+              </div>
+            </div>
+            <!--End of row 6: marketing instance id-->
             <!-- row 4: category -->
             <div class="form--body__category form-body-double">
               <div class="form--body__category-icon">
@@ -891,7 +868,37 @@ z" />
       <!-- End of the first page of the form-->
       <div class="entry-form-main" id="page2" style="display: none;">
         <!-- Add your page 2 content here -->
-        <p>hi</p>
+        <!--Page 2 row 1 location -->
+        <div class="form--body__row">
+          <div class="form--body__title">
+            <h1>Location</h1>
+          </div>
+        </div>
+        <div class="form--body__row">
+          <div class="form--body__region-label">Region</div>
+        </div>
+        <div class="form--body__row">
+          <div class="form--body__region">
+            <textarea placeholder="Add description" class="form--body__region-input" maxLength="200" spellcheck="false"></textarea>
+          </div>
+        </div>
+        <div class="form--body__row">
+          <div class="form--body__subregion-label">Sub-Region</div>
+        </div>
+        <div class="form--body__row">
+          <div class="form--body__subregion">
+            <textarea placeholder="Add description" class="form--body__subregion-input" maxLength="200" spellcheck="false"></textarea>
+          </div>
+        </div>
+        <div class="form--body__row">
+          <div class="form--body__countries-label">Countries</div>
+        </div>
+        <div class="form--body__row">
+          <div class="form--body__countries">
+            <textarea placeholder="Add description" class="form--body__countries-input" maxLength="200" spellcheck="false"></textarea>
+          </div>
+        </div>
+        <!--End of Page 2 row 1 location-->
         <div class="entries__form--footer">
           <button class="form--footer__button-save" type="submit" role="button" aria-label="button" aria-hidden>save</button>
           <button class="form--footer__button-back" type="submit" role="button" aria-label="button" aria-hidden>Back</button>
@@ -899,7 +906,8 @@ z" />
           <button class="form--footer__button-next-next" type="button" role="button" aria-label="Next page of form">Next</button>
           <!-- footer -->
         </div>
-        <!-- End of page 2 content here -->
+      </div>
+      <!-- End of page 2 content here -->
       </div>
       </div>
     </aside>
